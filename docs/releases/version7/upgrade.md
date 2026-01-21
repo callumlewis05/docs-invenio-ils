@@ -146,3 +146,50 @@ Enable the feature flag `ILS_EXTEND_INDICES_WITH_STATS_ENABLED = True` in your c
 invenio index reindex -t loanid
 invenio index run
 ```
+
+
+### Upgrade to v7.1
+Version 7.1 introduces new statistics for orders and document requests.
+They are optional and can be enabled with the feature flag `ILS_EXTEND_INDICES_WITH_STATS_ENABLED`.
+Before enabling the flag the index mappings of orders and document requests need to be updated.
+
+
+#### Orders
+
+##### Update Index Mapping
+Add the following mapping to the existing index named `acq_orders-order-v1.0.0-*`.
+
+```json
+"stats": {
+  "type": "object",
+  "dynamic": true,
+  "enabled": true
+}
+```
+
+##### Reindex
+
+```bash
+invenio index reindex -t acqoid
+invenio index run
+```
+
+#### Document Requests
+
+##### Update Index Mapping
+Add the following mapping to the existing index named `document_requests-document_request-v1.0.0-*`.
+
+```json
+"stats": {
+  "type": "object",
+  "dynamic": true,
+  "enabled": true
+}
+```
+
+##### Reindex
+
+```bash
+invenio index reindex -t dreqid
+invenio index run
+```
