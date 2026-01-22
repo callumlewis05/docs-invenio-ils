@@ -73,7 +73,9 @@ nav:
       - Location API: reference/api/location.md
       - Provider API: reference/api/provider.md
     - Statistics:
+      - Overview: reference/stats/index.md
       - Record Changes: reference/stats/record_changes.md
+      - Loan Statistics: reference/stats/loan_stats.md
   - Features:
     - Fast, Responsive User Interface: features/user_interface.md
     - Scalable, Optimised. Fast Search: features/search.md
