@@ -11,6 +11,7 @@ Make sure that you have installed the prerequisites below:
 - Python 3, at the moment we are using Python 3.9.
 - [pipenv](https://pypi.org/project/pipenv/), e.g. via [`pip`](https://pip.pypa.io/en/stable/).
 - [NodeJS](https://nodejs.org/en/download/) version 14.
+- [Docker Compose](https://docs.docker.com/compose/install).
 - [InvenioCLI](https://pypi.org/project/invenio-cli/) tool (see [reference](./reference/cli.md))
 
 ## Quick start
@@ -35,12 +36,12 @@ You will be asked several questions. If in doubt, choose the default. For this t
 
 For more information about the scaffolding process, see the [scaffold reference](./reference/scaffold.md).
 
-### 2. Start all dependent services using docker-compose
+### 2. Start all dependent services using docker compose
 This will start PostgreSQL, Elasticsearch, RabbitMQ and Redis:
 
 ```console
 cd my-site/
-docker-compose up -d
+docker compose up -d
 ```
 
 
@@ -97,5 +98,5 @@ When you are done, you can stop your instance
 
 To just stop the containers:
 ```bash
-docker-compose stop
+docker compose stop
 ```
