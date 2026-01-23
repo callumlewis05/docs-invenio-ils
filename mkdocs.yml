@@ -74,8 +74,11 @@ nav:
       - Provider API: reference/api/provider.md
     - Statistics:
       - Overview: reference/stats/index.md
-      - Record Changes: reference/stats/record_changes.md
+      - Histogram Endpoints: reference/stats/histogram.md
       - Loan Statistics: reference/stats/loan_stats.md
+      - Acquisition Orders: reference/stats/acquisition_orders.md
+      - Document Requests: reference/stats/document_requests.md
+      - Record Changes: reference/stats/record_changes.md
   - Features:
     - Fast, Responsive User Interface: features/user_interface.md
     - Scalable, Optimised. Fast Search: features/search.md

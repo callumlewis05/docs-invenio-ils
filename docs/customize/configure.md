@@ -166,6 +166,16 @@ EXTEND_LOANS_SCHEDULE_TIME = datetime.time(2)
 
 Enable or disable Self-Checkout feature.
 
+### ILS_EXTEND_INDICES_WITH_STATS_ENABLED (True/False)
+
+Enable or disable extended statistics fields in record indices. When enabled, additional computed fields are indexed for loans, acquisition orders, and document requests to support KPI reporting.
+
+```python
+ILS_EXTEND_INDICES_WITH_STATS_ENABLED = True
+```
+
+See the statistics reference for available fields: [Loans](../reference/stats/loan_stats.md#stats-fields), [Acquisition Orders](../reference/stats/acquisition_orders.md#stats-fields), [Document Requests](../reference/stats/document_requests.md#stats-fields). See the [v7 upgrade guide](../releases/version7/upgrade.md) for setup instructions.
+
 ## JSONSchemas Configuration
 
 ### JSONSCHEMAS_HOST

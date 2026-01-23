@@ -8,45 +8,21 @@ InvenioILS provides two complementary endpoints for analyzing loan data:
 
 ## Loan Histogram
 
-The Loan Histogram endpoint provides real-time aggregation of loan records from the loans index.
-It allows flexible grouping by any field and computation of statistical metrics on numeric fields.
-Each response returns the count for the loans matching the filter and grouping criteria under the field `doc_count` and the requested aggregated metrics.
-
-
-### Endpoint
+See [Histogram Endpoints](histogram.md) for general parameter documentation.
 
 ```
 GET /api/circulation/loans/stats
 ```
 
-### Parameters
+### Stats Fields
 
-| Name       | Type       | Location | Required | Description                                                                                                                                                                  |
-| ---------- | ---------- | -------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `group_by` | JSON array | query    | ✓        | Array of grouping definitions. Each item is an object with `field` (required) and `interval` (required for date fields). See [format details below](#group_by-field-format). |
-| `metrics`  | JSON array | query    | ✗        | Array of metric definitions. Each item is an object with `field` (required) and `aggregation` (required). See [format details below](#metrics-field-format).                 |
-| `q`        | string     | query    | ✗        | Search query string for filtering loans (uses standard search syntax).                                                                                                       |
+The following fields are added to loans specifically for statistics. They require [`ILS_EXTEND_INDICES_WITH_STATS_ENABLED`](../../customize/configure.md#ils_extend_indices_with_stats_enabled-truefalse) to be enabled.
 
-#### `group_by` Field Format
-
-Each grouping object can be:
-
-- **Term field**: `{"field": "field_name"}` - Groups by exact values (e.g., `state`, `patron_pid`)
-- **Date field**: `{"field": "date_field", "interval": "time_interval"}` - Groups by time intervals
-    - Available intervals for date fields: `1d` (day), `1w` (week), `1M` (month), `1q` (quarter), `1y` (year)
-
-#### `metrics` Field Format
-
-Each metrics object is:
-
-- `{"field": "field_name", "aggregation": "aggregation_type"}`
-    - Available aggregation types: `avg` (average), `sum` (total), `min` (minimum), `max` (maximum), `median` (50th percentile)
-
-!!! tip "Discovering available fields"
-    To see all available loan fields for grouping and metrics, query the loans endpoint:
-    ```
-    GET /api/circulation/loans
-    ```
+| Field                                            | Description                                                     |
+| ------------------------------------------------ | --------------------------------------------------------------- |
+| `extra_data.stats.available_items_during_request` | Whether loanable items were available when the loan was requested. |
+| `extra_data.stats.loan_duration`                  | Duration of the loan in days (for completed loans).             |
+| `extra_data.stats.waiting_time`                   | Days between request creation and checkout.                     |
 
 ### Examples
 
