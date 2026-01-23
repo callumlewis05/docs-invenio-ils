@@ -56,11 +56,25 @@ This will install dependencies, builds assets, create demo static pages, seed th
 
 #### Run the backend server
 
+
+!!! info "CSRF configuration for local development"
+    **Do not use this configuration in production.**
+
+    During local development, the frontend and backend typically run on different ports. This can trigger CSRF protection mechanisms and prevent requests from being accepted.
+
+    To allow local development, CSRF protection can be disabled by adding the following setting to your `invenio.cfg` file:
+
+    ```python
+    REST_CSRF_ENABLED = False
+    ```
+
+Now run
+
 ```console
 FLASK_ENV=development pipenv run invenio run --cert docker/backend/test.crt --key docker/backend/test.key
 ```
 
-Now visit [https://127.0.0.1:5000](https://127.0.0.1:5000) (accept the self-signed certificate warning if proposed). You should now see the InvenioILS backend.
+Visit [https://127.0.0.1:5000](https://127.0.0.1:5000) (accept the self-signed certificate warning if proposed). You should now see the InvenioILS backend.
 
 **Note** The server is using a self-signed SSL certificate, which we specify in the command above.
 If this is not the desired behaviour, you can by-pass it with:
