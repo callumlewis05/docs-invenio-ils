@@ -100,3 +100,10 @@ To just stop the containers:
 ```bash
 docker compose stop
 ```
+
+
+## Resetting the Instance
+If you would lke to reset your instance (database, indices, cache...) run:
+```console
+invenio-cli services setup --force
+```
