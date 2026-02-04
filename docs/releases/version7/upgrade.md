@@ -11,7 +11,7 @@ The steps listed in this article require an existing local installation of Inven
 ### Upgrade to v7.0
 !!! warning Steps required before updating 
 
-    The following steps should be performed before upgrading invenio-app-ils to v6.1.0
+    The following steps should be performed before upgrading invenio-app-ils to v7.0.0
 
 Version 7.0 introduces new statistics for loans.
 For them to work correctly, search templates need to be created and updated before the indices are.
@@ -129,7 +129,7 @@ PUT _template/aggr-loan-transitions-v1.json
 #### Upgrade InvenioILS
 Now upgrade `invenio-app-ils` to v7.0.0.
 
-#### (Optional) Add Stats to Loan Indfex
+#### (Optional) Add Stats to Loan Index
 
 ##### Create the indices
 To create a new index extend a loan and process the events afterwards with
